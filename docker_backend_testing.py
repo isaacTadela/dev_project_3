@@ -29,7 +29,7 @@ except IndexError as ie:
 except pymysql.err.IntegrityError as ie:
     print("DB response - Duplicate entry for PRIMARY key",ie)        
 except ( RuntimeError, pymysql.err.OperationalError ) as oe:
-    print("DB response - Can't connect to MySQL server", oe)
+    print("DB error - Can't connect to MySQL server", oe)
     raise Exception(oe)
 except Exception as e:
     print("test failed",e)
