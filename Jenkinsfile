@@ -15,12 +15,12 @@ stages {
     }
     stage('testing backend') {
         steps {
+			sleep(5)
 			bat 'python backend_testing.py'
         }
     }
     stage('clean environment') {
         steps {
-			sleep(5)
             bat 'python clean_environment.py'
         }
     }
@@ -43,12 +43,12 @@ stages {
     }
     stage('testing docker-compose') {
         steps {
+			sleep(5)
             bat 'python docker_backend_testing.py'
         }
     }
     stage('clean docker environment') {
         steps {
-			sleep(5)
             bat 'docker-compose down -v --rmi all'
         }
     }
