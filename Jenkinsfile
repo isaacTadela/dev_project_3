@@ -21,6 +21,7 @@ stages {
     }
     stage('clean environment') {
         steps {
+			sleep(5)
             bat 'python clean_environment.py'
         }
     }
@@ -49,6 +50,7 @@ stages {
     }
     stage('clean docker environment') {
         steps {
+			sleep(5)
             bat 'docker-compose down -v --rmi all'
         }
     }
