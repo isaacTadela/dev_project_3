@@ -50,7 +50,7 @@ stages {
     }
     stage('clean docker environment') {
         steps {
-			sleep(5)
+			sleep(10)
             bat 'docker-compose down -v --rmi all'
         }
     }
