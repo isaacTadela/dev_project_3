@@ -6,6 +6,7 @@ host, port, user, passwd, db = 'mysql-db', 3306, 'root', '123456', 'db'
 
 def insert(user_id, user_name):
     try:
+        print("insert user",user_id ,user_name)
         # Establishing a connection to DB 
         conn = pymysql.connect(host=host, port=port, user=user, passwd=passwd, db=db,
                                    cursorclass=pymysql.cursors.DictCursor)
@@ -28,6 +29,7 @@ def insert(user_id, user_name):
 
 def select(user_id):
     try:
+        print("select user",user_id)
         # Establishing a connection to DB
         conn = pymysql.connect(host=host, port=port, user=user, passwd=passwd, db=db,
                                    cursorclass=pymysql.cursors.DictCursor)
@@ -52,7 +54,7 @@ def select(user_id):
 
 def update(user_id, user_name):
     try:
-        print("start update")
+        print("update user",user_id, user_name)
         result = select(user_id)
         if(result == 2):  # no such id
             return result
@@ -79,6 +81,7 @@ def update(user_id, user_name):
 
 def delete(user_id):
     try:
+        print("delete user",user_id)
         result = select(user_id)
         if (result == 2):  # no such id
             return result

@@ -13,7 +13,6 @@ def users(user_id):
         request_data = request.json
         user_name = request_data.get('user_name')
         result = insert(user_id, user_name)
-        print("post user",user_id)
         
         if result==1:
             return {'status': 'ok', 'user_added': user_name}, 200 # status code
@@ -25,7 +24,6 @@ def users(user_id):
             return {'status': 'error', 'reason': 'unknown'}, 500
     elif request.method == 'GET':
         result = select(user_id)
-        print("get user",user_id)
         
         if result not in {2, 3, 4}:
             return {'status': 'ok', 'user_name': result}, 200 # status code
@@ -40,7 +38,6 @@ def users(user_id):
         request_data = request.json
         user_name = request_data.get('user_name')
         result = update(user_id, user_name)
-        print("update user",user_id)
         
         if result == 1:
             return {'status': 'ok', 'user_updated': user_name}, 200  # status code
@@ -53,7 +50,7 @@ def users(user_id):
 
     elif request.method == 'DELETE':
         result = delete(user_id)
-        print("delete user",user_id)
+
         if result == 1:
             return {'status': 'ok', 'user_deleted': user_id}, 200 # status code
         elif result == 2:
