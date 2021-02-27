@@ -15,12 +15,12 @@ stages {
     }
     stage('testing backend') {
         steps {
-			sleep(5)
 			bat 'python backend_testing.py'
         }
     }
     stage('clean environment') {
         steps {
+			sleep(5)
             bat 'python clean_environment.py'
         }
     }
