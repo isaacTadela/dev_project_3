@@ -40,16 +40,17 @@ stages {
     stage('docker-compose up') {
         steps {
 			bat 'docker-compose up -d'
-			sleep(20)
         }
     }
     stage('testing docker-compose') {
         steps {
+			sleep(20)
             bat 'python docker_backend_testing.py'
         }
     }
     stage('clean docker environment') {
         steps {
+			sleep(20)
             bat 'docker-compose down -v --rmi all'
         }
     }
