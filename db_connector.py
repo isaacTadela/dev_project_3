@@ -6,7 +6,6 @@ host, port, user, passwd, db = 'mysql-db', 3306, 'root', '123456', 'db'
 
 def insert(user_id, user_name):
     try:
-        print("insert user",user_id ,user_name)
         # Establishing a connection to DB 
         conn = pymysql.connect(host=host, port=port, user=user, passwd=passwd, db=db,
                                    cursorclass=pymysql.cursors.DictCursor)
@@ -17,6 +16,7 @@ def insert(user_id, user_name):
         cursor.close()
         conn.close()
         result = 1 # user added
+        print("inserted user",user_id ,user_name)
     except pymysql.err.IntegrityError as ie:
         result = 2 # id already exists
     except ( RuntimeError, pymysql.err.OperationalError ) as oe:
@@ -29,7 +29,6 @@ def insert(user_id, user_name):
 
 def select(user_id):
     try:
-        print("select user",user_id)
         # Establishing a connection to DB
         conn = pymysql.connect(host=host, port=port, user=user, passwd=passwd, db=db,
                                    cursorclass=pymysql.cursors.DictCursor)
@@ -42,6 +41,7 @@ def select(user_id):
         cursor.close()
         conn.close()
         result = user_name # user name
+        print("selected user",user_id ,user_name)
     except IndexError as ie:
         result = 2  # no such id
     except (RuntimeError, pymysql.err.OperationalError) as oe:
@@ -67,8 +67,8 @@ def update(user_id, user_name):
         cursor.execute(f"UPDATE {db}.users SET user_name = '{user_name}' WHERE user_id = {user_id};")
         cursor.close()
         conn.close()
-
         result = 1  # user updated
+        print("updated user",user_id, user_name)
     except IndexError as ie:
         result = 2  # no such id
     except (RuntimeError, pymysql.err.OperationalError) as oe:
@@ -81,7 +81,6 @@ def update(user_id, user_name):
 
 def delete(user_id):
     try:
-        print("delete user",user_id)
         result = select(user_id)
         if (result == 2):  # no such id
             return result
@@ -95,6 +94,7 @@ def delete(user_id):
         cursor.close()
         conn.close()
         result = 1 # user deleted
+        print("deleted user",user_id)
     except IndexError as ie:
         result = 2 # no such id
     except ( RuntimeError, pymysql.err.OperationalError ) as oe:
