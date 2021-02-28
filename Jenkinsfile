@@ -20,7 +20,6 @@ stages {
     }
     stage('clean environment') {
         steps {
-			sleep(10)
             bat 'python clean_environment.py'
         }
     }
