@@ -44,13 +44,11 @@ stages {
     }
     stage('testing docker-compose') {
         steps {
-			sleep(10)
             bat 'python docker_backend_testing.py'
         }
     }
     stage('clean docker environment') {
         steps {
-			sleep(10)
             bat 'docker-compose down -v --rmi all'
         }
     }
