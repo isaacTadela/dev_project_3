@@ -1,7 +1,7 @@
 import pymysql
 
 
-host, port, user, passwd, db = 'mysql-db', 3306, 'root', '123456', 'db'
+host, port, user, passwd, db = 'mysql-db', 3306, 'user', 'password', 'db'
 
 
 def insert(user_id, user_name):

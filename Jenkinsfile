@@ -7,22 +7,6 @@ stages {
             bat 'git clone https://github.com/isaacTadela/dev_project_3'
         }
     }
-    stage('rest app') {
-        steps {
-            bat 'pip install -r requirements.txt'
-			bat 'start /min python rest_app.py'
-        }
-    }
-    stage('testing backend') {
-        steps {
-			bat 'python backend_testing.py'
-        }
-    }
-    stage('clean environment') {
-        steps {
-            bat 'python clean_environment.py'
-        }
-    }
     stage('build image') {
         steps {
             bat 'docker build -t iitzhakk/dev_proj_3 .'
@@ -42,13 +26,12 @@ stages {
     }
     stage('testing docker-compose') {
         steps {
-			sleep(20)
+			sleep(210)
             bat 'python docker_backend_testing.py'
         }
     }
     stage('clean docker environment') {
         steps {
-			sleep(20)
             bat 'docker-compose down -v --rmi all'
         }
     }
