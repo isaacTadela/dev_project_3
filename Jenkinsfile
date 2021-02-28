@@ -40,6 +40,7 @@ stages {
     stage('docker-compose up') {
         steps {
 			bat 'docker-compose up -d'
+			sleep(10)
         }
     }
     stage('testing docker-compose') {
