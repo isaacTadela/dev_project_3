@@ -26,7 +26,7 @@ stages {
     }
     stage('testing docker-compose') {
         steps {
-			sleep(210)
+			sleep(240)
             bat 'python docker_backend_testing.py'
         }
     }
